@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :subtotal %>
+    <%= form.number_field :subtotal %>
+  </div>
+
+  <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= select_tag(:product_id, options_for_select(@products)) %>  
   </div>
 
   <div class="actions">

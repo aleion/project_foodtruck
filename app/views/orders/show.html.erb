@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Product:</strong>
-  <%= @order.product %>
+  <strong>Ordene Nº: <%= @order.id %></strong>
+  <%= @order.subtotal %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

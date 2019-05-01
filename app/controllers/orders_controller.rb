@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @products = Product.all.map{|c| [ c.title, c.id, c.price ] }
   end
 
   # GET /orders/1/edit
@@ -25,6 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.product_ids = params[:product_id]
 
     respond_to do |format|
       if @order.save
@@ -69,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:product_id)
+      params.require(:order).permit(:subtotal, :product_id, products_attributes: [:title, :id, :price])
     end
 end

@@ -14,7 +14,7 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "New Order"
 
-    fill_in "Product", with: @order.product_id
+    fill_in "Subtotal", with: @order.subtotal
     click_on "Create Order"
 
     assert_text "Order was successfully created"
@@ -25,7 +25,7 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "Edit", match: :first
 
-    fill_in "Product", with: @order.product_id
+    fill_in "Subtotal", with: @order.subtotal
     click_on "Update Order"
 
     assert_text "Order was successfully updated"
