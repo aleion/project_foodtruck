@@ -15,7 +15,10 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @products = Product.all.map{|c| [ c.title, c.id, c.price ] }
+  end
+
+  def products_or
+    Product.all.map { |p| [ p.title, p.id ] }
   end
 
   # GET /orders/1/edit
@@ -26,7 +29,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.product_ids = params[:product_id]
+    @order.products << Product.find(params[:product_id])
 
     respond_to do |format|
       if @order.save

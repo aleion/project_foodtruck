@@ -18,7 +18,10 @@
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= select_tag(:product_id, options_for_select(@products)) %>  
+    <% def products_or
+      Product.all.map { |p| [ p.title, p.id ] }
+      end%>
+    <%= select_tag(:product_id, options_for_select(products_or)) %>  
   </div>
 
   <div class="actions">
