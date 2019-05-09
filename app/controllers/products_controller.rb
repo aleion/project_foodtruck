@@ -4,7 +4,14 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    #@products = Product.all
     @products = Product.all
+   
+    if category = params[:category]
+    @products = Category.find_by(title: category).products
+    end
+    @categories = Category.all.map{|c| [ c.title, c.id ] }
+
   end
 
   # GET /products/1
