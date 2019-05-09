@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     #@products = Product.all
-    @products = Product.all
+    @products = []
    
     if category = params[:category]
     @products = Category.find_by(title: category).products
