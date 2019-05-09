@@ -28,6 +28,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        format.js
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
