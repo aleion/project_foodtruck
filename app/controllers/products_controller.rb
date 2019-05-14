@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
     @product.category = Category.find(params[:category_id])
     respond_to do |format|
       if @product.save
+        format.js
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
