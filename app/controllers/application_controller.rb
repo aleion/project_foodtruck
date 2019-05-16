@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
-before_action :prod
+    before_action :prod
 
-    def prod
-        @products = Product.all
-    end
+        def prod
+            @products = Product.all
+        end
+
+    include CurrentOrder
+        before_action :set_order
+    
 end
