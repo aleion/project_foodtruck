@@ -1,3 +1,54 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrap{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 80vh;
+    width: 90%;
+    margin: auto;
+}
+.cat-grid{
+    grid-column: 1;
+    align-self: center;
+}
+
+.cat-form-grid{
+    align-self: center;
+    justify-self: center;
+
+}
+.ml{
+    margin-left: 10px;
+}
+
+.sub-title{
+    font-size: 16px;
+    
+    font-weight: bold;
+    color: black;
+    margin: 30px;
+    
+}
+#new-cat-btn{
+    height: 60px;
+    background-color: #F2C058;
+    width: 250px;
+    display: grid;
+    align-content: center;
+    border-radius: 50px;
+    text-align: center;
+}
+.sub-title:hover{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+.input-cat{
+    font-size: 16px;
+    font-weight: bold;
+    width: 250px;
+    
+
+}

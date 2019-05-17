@@ -1,6 +1,6 @@
 <tr>
     <td><%= category.title %></td>
     <!-- <td><%= link_to 'Show', category %></td> -->
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '', edit_category_path(category),class: "fa fa-pen ml", style: "color: #211E1F; font-size: 20px;" %></td>
+    <td><%= link_to '', category, method: :delete, class: 'fas fa-times-circle ml',style: "color: #FF6969; font-size: 20px;", data: { confirm: 'Are you sure?' } %></td>
 </tr>
