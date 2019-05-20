@@ -1,3 +1,41 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-rows: 1fr;
+    height: 600px;
+}
+.cat-list{
+grid-column: 1;
+grid-row: 1;
+align-self: center;
+justify-self: left;
+padding: 40px;
+}
+#prod-list{
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    
+}
+
+#new-prod{
+    grid-column: 3;
+    align-self: center;
+    justify-self: center;
+}
+a{
+    
+    color: black;
+    font-size: 16px;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+li{
+    list-style: none;
+}

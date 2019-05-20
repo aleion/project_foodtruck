@@ -16,6 +16,12 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   def new
     @line_item = LineItem.new
+    @categories = Category.all.map{|c| [ c.title, c.id ] }
+    @products = []
+   
+    if category = params[:category]
+    @products = Category.find_by(title: category).products
+    end
   end
 
   # GET /line_items/1/edit
@@ -27,7 +33,6 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @order.add_product(product)
-    
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.order, notice: 'Line item was addes ok' }

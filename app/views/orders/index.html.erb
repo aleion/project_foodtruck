@@ -13,7 +13,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.id %></td>
+        <td><a>Orden Nº: <%= order.id %> - <%= order.created_at%></a></td>
         <td><%= link_to 'Ver', order %></td>
         <!--<td><%= link_to 'Edit', edit_order_path(order) %></td>-->
         <td><%= link_to 'Eliminar', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

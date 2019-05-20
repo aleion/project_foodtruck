@@ -1,36 +1,40 @@
-<p id="notice"><%= notice %></p>
 
-<p>Categorias</p>
-<div id="cat-list">
-<% Category.all.each do |cat|%>
-<li>
-  <%= link_to cat.title, products_path(category: cat.title)%>
-  </li>
-<%end%>
-<br>
-</div>
+<section class="wrapper">
+   <div class="cat-list"> 
+    <h5>Categorias:</h5>
+    <div id="cat-list">
+    <% Category.all.each do |cat|%>
+    <li>
+      <%= link_to cat.title, products_path(category: cat.title)%>
+      </li>
+    <%end%>
+    <br>
+    </div>
+  </div>
 
 
+    <div id="prod-list">
+      <table id="products">
+        <thead>
+          <tr>
+            <th>Producto:</th>
+            <th>Precio:</th>
+            <!--<th>Details</th>-->
+            <th>Categoria:</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<div id="prod-list">
-<table id="products">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <!--<th>Details</th>-->
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <%= render @products %>
+        </tbody>
+      </table>
+    </div>
 
-  <tbody>
-    <%= render @products %>
-  </tbody>
-</table>
+    <div id="new-prod">
+      <%= link_to 'Crear producto', new_product_path, remote: true %>
+    </div>
+    
+</section>
 
-<br>
-<div id="new-prod">
-<%= link_to 'New Product', new_product_path, remote: true %>
-</div>
-</div>
+
