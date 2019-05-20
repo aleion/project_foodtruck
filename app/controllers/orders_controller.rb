@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /orders
   # GET /orders.json
@@ -30,8 +31,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.products << Product.find(params[:product_id])
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -60,7 +59,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy if @order.id == session[:order_id]
+    @order.destroy #if @order.id == session[:order_id]
     session[:order_id] = nil
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }

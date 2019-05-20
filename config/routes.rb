@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :products 
   resources :categories
 
+  post 'orders' => 'orders#create', as: 'order_create'
+
   devise_for :users
 
   root to: 'categories#index'
