@@ -1,12 +1,44 @@
-<p id="notice"><%= notice %></p>
-<h4>Orden Nº: <%= @order.id %></h4>
-<tr>
-            <th>Producto:</th>
-            <th>Cantidad:</th>
-        </tr>
-<section>
-  <%= render @order.line_items%>
-</section>
+  <div class="wrapper_order">     
+      <div class="nav_order">
+        <div>
+          <p>Orden Nº: <%= @order.id %></p>
+        </div>
+        <div> 
+          <% Category.all.each do |cat|%>
+            
+              <%= link_to cat.title, order_path(category: cat.title),style: 'float:left; margin:10px;'%>
+          
+          <%end%>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+      <div class="prod_order">
+        <p>Productos:</p>
+        <table>
+        <%= render @products %>
+        </table>
+      </div>
+      
+      <div class="order">
+            <div class="order_title">
+                <p>Orden Nº: <%= @order.id %></p>
+            </div>            
+            
+            <div class="order_prod">
+                <tr>
+                  <th>Producto:</th>
+                  <th>Cantidad:</th>
+                  <th>Precio:</th>
+                </tr>
+              <%= render @order.line_items%>
+            </div>
+
+            <div clas="order_footer">
+              <button>Ordenar</button>
+            </div>
+          <!--
+          <%= link_to 'Edit', edit_order_path(@order) %> |
+          <%= link_to 'Back', orders_path %>
+          -->
+      </div>
+  </div>    

@@ -1,0 +1,11 @@
+    <tr>
+        <td><%= product.title %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category.title %></td>
+        <td><%= link_to '', edit_product_path(product),class: "fa fa-pen ml", style: "color: #211E1F; font-size: 20px;"%></td>
+        <td><%= link_to '', product, method: :delete, class: 'fas fa-times-circle ml',style: "color: #FF6969; font-size: 20px;", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'agregar', line_items_path(product_id: product),class: 'addBtn', method: :post%></td>
+    </tr>
+
+    
+  

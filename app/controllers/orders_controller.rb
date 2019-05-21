@@ -12,11 +12,19 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @products = []
+   
+    if category = params[:category]
+    @products = Category.find_by(title: category).products
+    end
+    @categories = Category.all.map{|c| [ c.title, c.id ] }
   end
 
   # GET /orders/new
   def new
     @order = Order.new
+    @products = Product.all.map{|p| [ p.title, p.id ] }
+    
   end
 
   def products_or
@@ -59,7 +67,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy #if @order.id == session[:order_id]
+    @order.destroy if @order.id == session[:order_id]
     session[:order_id] = nil
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
