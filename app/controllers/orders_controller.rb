@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :close]
   
 
   # GET /orders
@@ -73,6 +73,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def close
+    session[:order_id] = nill
+    format.html { redirect_to orders_url}
   end
 
   private

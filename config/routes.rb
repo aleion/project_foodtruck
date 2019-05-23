@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :categories
 
   post 'orders' => 'orders#create', as: 'order_create'
+  post 'orders/close'
 
   devise_for :users
 
